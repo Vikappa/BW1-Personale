@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Outfit:wght@100;400;500;600&display=swap');
+
+@font-face {
+    font-family: 'Metropolis';
+    src: local('Metropolis'), url('../Fonts/Metropolis-ExtraBold.otf') format('woff');
+}
+
+body {
+    padding: 4vh 6vw;
+    background-image: url("../img/bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+bold {
+    font-weight: 700;
+}
+
+header {
+    font-family: 'Metropolis';
+    display: flex;
+    font-size: 2.5rem;
+    gap: 1%;
+    margin-bottom: 5%;
+}
+
+header p {
+    padding-top: 0.3%;
+    letter-spacing: 0.5vw;
+    font-weight: 900;
+    font-size: 3.5rem;
+}
+
+@media (max-width: 1400px) {
+    header p {
+        padding-top: 0.2%;
+        letter-spacing: 0.3vw;
+        font-weight: 900;
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    header p {
+        padding-top: 0.2%;
+        letter-spacing: 0.3vw;
+        font-weight: 900;
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    header p {
+        padding-top: 0.2%;
+        letter-spacing: 0.3vw;
+        font-weight: 900;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 350px) {
+    header p {
+        padding-top: 0.2%;
+        letter-spacing: 0.3vw;
+        font-weight: 900;
+        font-size: 1.8rem;
+    }
+}
+
+header img {
+    width: 4vw;
+    height: 4vw;
+}
+
+@media (max-width: 1050px) {
+    header img {
+        width: 5vw;
+        height: 5vw;
+    }
+}
+
+@media (max-width: 750px) {
+    header img {
+        width: 6vw;
+        height: 6vw;
+    }
+}
+
+@media (max-width: 650px) {
+    header img {
+        width: 5vh;
+        height: 5vh;
+    }
+}
+
+@media (max-width: 500px) {
+    header img {
+        width: 4vh;
+        height: 4vh;
+    }
+}
+
+@media (max-width: 400) {
+    header img {
+        width: 7vh;
+        height: 7vh;
+    }
+
+    @media (max-width: 350) {
+        header img {
+            width: 8vh;
+            height: 8vh;
+        }
+    }
+
+    header {
+        font-family: 'Metropolis';
+        display: flex;
+        font-size: 2rem;
+        gap: 3%;
+        margin-bottom: 5%;
+    }
+
+    header p {
+        letter-spacing: 0.5vw;
+        font-weight: 900;
+    }
+}

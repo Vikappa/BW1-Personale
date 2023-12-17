@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+.divCiambella {
+  display: flex;
+}
+
+.divSchermataCiambella {
+  margin-top: 10%;
+}
+
+#divFraseSuperamentoON {
+  position: absolute;
+}
+
+#divFraseSuperamentoONo {
+  text-align: center;
+  font-size: 2em;
+  position: relative;
+  white-space: nowrap;
+}
+
+#graficoCiambella {
+  position: absolute;
+  top: -132px;
+  left: -76px;
+}
+
+#divQuanteSbagliate {
+  text-align: center;
+  font-size: 4.5em;
+  margin: 15%;
+  margin-top: 5%;
+  position: relative;
+  right: -84px;
+}
+#divQuanteGiuste {
+  text-align: center;
+  font-size: 4.5em;
+  margin: 15%;
+  margin-top: 5%;
+  position: relative;
+  right: 96px;
+}
+
+.primaFraseResultCorrect {
+  font-size: 0.45em;
+  padding-bottom: 10px;
+  text-align: center;
+  position: relative;
+  right: -12px;
+  top: -9px;
+  font-family: "Inter", sans-serif;
+}
+.secondaFraseResultCorrect {
+  font-size: 0.3em;
+  color: #00ffff;
+  padding-bottom: 10px;
+  text-align: center;
+  position: relative;
+  right: -10px;
+  top: -17px;
+  font-family: "Inter", sans-serif;
+}
+.terzaFraseResultCorrect {
+  font-size: 0.18em;
+  text-align: center;
+  position: relative;
+  right: -13px;
+  top: -4px;
+  font-family: "Inter", sans-serif;
+}
+.primaFraseResultSbagliato {
+  font-size: 0.8em;
+  padding-bottom: 10px;
+  text-align: center;
+  position: relative;
+  right: -10px;
+  top: -21px;
+  font-family: "Inter", sans-serif;
+}
+.secondaFraseResultSbagliato {
+  font-size: 0.4em;
+  color: #00ffff;
+  padding-bottom: 10px;
+  text-align: center;
+  position: relative;
+  right: -12px;
+  top: -27px;
+  font-family: "Inter", sans-serif;
+}
+.terzaFraseResultSbagliato {
+  font-size: 0.2em;
+  text-align: center;
+  position: relative;
+  right: -14px;
+  top: -11px;
+  font-family: "Inter", sans-serif;
+}
+.quanteCiambella {
+  font-size: 0.4em;
+  text-align: left;
+  font-family: "Outfit", sans-serif;
+}
+.percentualeCiambella {
+  font-size: 1em;
+  font-weight: bold;
+  text-align: left;
+  font-family: "Outfit", sans-serif;
+}
+.txtCiambella {
+  font-size: 1em;
+  text-align: left;
+  font-family: "Outfit", sans-serif;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./assets/style/reset.css" />
+  <link rel="icon" href="./assets/img/Vincenzoft grande.png" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/style/index.css">
+  <link rel="stylesheet" href="./assets/style/style.css" />
+  <title>VINCENZOFT - SOFTWARE NON ARRANCANTE CHE PROVA A FA IL SUO</title>
+</head>
+
+<body>
+  <header>
+    <img id="banner-logo" src="./assets/img/Vincenzoft grande.png" />
+    <p>VINCENZOFT</p>
+  </header>
+  <main>
+    <div id="title">
+      <h1 id="title1">Welcome to</h1>
+      <h1 id="title2">your exam</h1>
+    </div>
+    <div id="title-instructions">
+      <h3>Instructions</h3>
+    </div>
+    <div id="description">
+      <h6>
+        Questo è un esercizio realizzato durante un progetto di gruppo durante il corso EPICODE. Quella che vedi è la
+        versione personale che ho scritto per conto mio partendo dal branch del progetto consegnato
+      </h6>
+    </div>
+    <section id="elenco">
+      <ul>
+        <li>Le domande sono <bold>scaricate con un fetch</bold> da Open Trivia DB https://opentdb.com/</li>
+        <li>
+          Le domande passano <bold>da difficoltà basilari a insormontabili</bold>. Quelle più lunghe prevedono più tempo
+          per
+          rispondere, le più facili meno.
+        </li>
+        <li>La simulazione di esame può durare <bold>fino a 30 minuti</bold>
+        </li>
+      </ul>
+    </section>
+
+    <footer>
+      <form>
+        <div id="check">
+          <input id="checkbox" type="checkbox" id="checkIfYes" />
+          <span> Pigiando questo tasto generalmente accetti condizioni di qualcosa. Adesso c'è perchè volevo farti fare
+            un clic in più</span>
+        </div>
+      </form>
+    </footer>
+    <button onclick="buttonClick()" id="buttonProceed" disabled>PROCEED</button>
+
+  </main>
+  <script src="./assets/script/index.js"></script>
+</body>
+
+</html>

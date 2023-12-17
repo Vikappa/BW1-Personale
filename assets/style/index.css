@@ -1,0 +1,154 @@
+#title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 5rem;
+    margin-bottom: 3%;
+    letter-spacing: -1px;
+}
+
+#title1 {
+    font-weight: 400;
+}
+
+@media (max-width: 360px) {
+    #title1 {
+        font-size: 3rem;
+    }
+}
+
+#title2 {
+    margin-top: -2%;
+    font-weight: 900;
+}
+
+@media (max-width: 360px) {
+    #title2 {
+        margin-top: -5%;
+        font-size: 3rem;
+    }
+}
+
+
+#title-instructions #buttonProceed {
+    position: absolute;
+    right: 8vw;
+    bottom: 7vh;
+    width: 16vw;
+    height: 7vh;
+}
+
+#buttonProceed {
+    position: absolute;
+    right: 10vw;
+    bottom: 5vh;
+    height: 70px;
+    width: 300px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    padding-bottom: 0.1%;
+    font-weight: 600;
+    padding-bottom: 3px;
+    background-color: #00FFFF;
+}
+
+@media (max-width: 650px) {
+    #buttonProceed {
+        position: absolute;
+        right: 10%;
+        bottom: 8vh;
+        height: 50px;
+        width: 200px;
+    }
+}
+
+@media (max-width: 420px) {
+    #buttonProceed {
+        position: static;
+        bottom: 0;
+        right: auto;
+        margin: 1vh;
+        float: right;
+        height: 50px;
+        width: 200px;
+    }
+}
+
+@media (max-width: 650px) {
+    #buttonProceed {
+        margin: 1vh;
+        height: 50px;
+        width: 200px;
+    }
+}
+
+#title-instructions {
+    color: #C2128D;
+    font-size: 2rem;
+    font-weight: 600;
+    -webkit-margin-collapse: collapse;
+    margin: 1%;
+}
+
+#buttonProceed.enabled:hover {
+    transition: 0.7s;
+    box-shadow: 0px 0px 30px 7px #00ffff;
+    cursor: pointer;
+    border: none;
+}
+
+@media (max-width: 360px) {
+    #title-instructions {
+        color: #C2128D;
+        font-size: 1.5rem;
+        font-weight: 600;
+        -webkit-margin-collapse: collapse;
+        margin: 2vh;
+    }
+}
+
+#description h6 {
+    margin: 1%;
+    min-width: 40%;
+    max-width: 70%;
+}
+
+#elenco {
+    margin: 4%;
+}
+
+#elenco li {
+    margin: 1%
+}
+
+#check {
+    display: flex;
+}
+
+#check span {
+    padding: 0.3%;
+}
+
+#checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+#checkbox:checked {
+    background-color: #C2128D;
+    border-color: #007bff;
+}
+
+#checkbox:checked::before {
+    content: '✓';
+    color: white;
+    font-size: 3rem;
+    position: relative;
+    bottom: 200%;
+    left: -50%;
+}

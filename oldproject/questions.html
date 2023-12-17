@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style/reset.css" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/grafico.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./style/leaderboard.css" />
+    <title>Question E Results</title>
+  </head>
+
+  <body>
+    <header>
+      <img src="../assets/epicode_logo.png" />
+      <canvas id="animazioneCoriandoli"></canvas>
+      <canvas id="animazioneGocce"></canvas>
+    </header>
+    <main>
+      <section>
+        <div id="testAppend"></div>
+        <div id="resultleaderboard"></div>
+      </section>
+      <section>
+        <!-- <h3 id="messaggioGocce">APPROFONDISCI TEORIA E PRATICA !!</h3> -->
+      </section>
+    </main>
+    <footer></footer>
+    <audio
+      id="audioWinner"
+      src="./sounds/crowd-cheer-results.wav"
+      preload="auto"
+    ></audio>
+    <audio
+      id="audioLooser"
+      src="./sounds/looser-results.wav"
+      preload="auto"
+    ></audio>
+    <script src="./scripts/question_functions.js"></script>
+  </body>
+</html>
