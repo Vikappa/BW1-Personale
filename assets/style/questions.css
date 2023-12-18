@@ -103,7 +103,68 @@ html {
     }
 }
 
-#questionStage {}
+#bloccoRisposte {
+    margin: 5% auto auto auto;
+}
+
+.bottoneRisposta {
+    width: 80%;
+    margin: 5%;
+    height: 5vh;
+    padding-bottom: 3px;
+    border-radius: 50px;
+    color: white;
+    font-family: 'Outfit', sans-serif;
+    background-color: rgba(116, 116, 116, 0.1);
+    box-shadow: -1px -3px 1.5px whitesmoke;
+    border-color: rgba(255, 255, 255, 0.386);
+    background: linear-gradient(177deg, #b9018b, #36042a);
+}
+
+#rigaRisposte1,
+#rigaRisposte2 {
+    width: 90%;
+    margin: 0 auto;
+}
+
+@media (min-width: 320px) {
+    #bloccoRisposte {
+        margin: 5% auto auto auto;
+    }
+
+    .bottoneRisposta {
+        width: 49%;
+        height: 10vh;
+        margin: 2%;
+        font-size: 1rem;
+    }
+
+    #rigaRisposte1,
+    #rigaRisposte2 {
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 670px) {
+    #bloccoRisposte {
+        margin: 5% auto auto auto;
+    }
+
+    #rigaRisposte1,
+    #rigaRisposte2 {
+        display: flex;
+        width: 100%;
+
+    }
+
+    .bottoneRisposta {
+        font-size: 2rem;
+        width: 48%;
+    }
+
+}
 
 #pDomanda {
     margin: 0 auto;

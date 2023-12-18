@@ -58,7 +58,7 @@ const start = async function () {
 
 ///////////////////////////////////////////////// Metodi comuni ai metodi della pagina /////////////////////////////////////////////////
 const fermaTicToc = async function () {
-    console.log("Fermato")
+    console.log("Fermato timer")
     clearInterval(intervalloUnico)
 } //killa il timer
 
@@ -251,12 +251,11 @@ const cerchioTimer = function (difficolta) {
 } //ritorna un div
 
 const divDinamicoQuestion = async function (obgDomanda) {
+    nDomandeFatte++
     if (!obgDomanda) {
         delay(2500)
-        console.log("Metodo fetch delay")
         return divDinamicoQuestion(obgDomanda)
     }
-    console.log(obgDomanda)
     dinamicStage.innerHTML = ``
     //question
     const pDomanda = document.createElement('p')
@@ -270,9 +269,8 @@ const divDinamicoQuestion = async function (obgDomanda) {
 
     // blocco risposte
     const creaPulsante = function (risposta, i) {
-        const divPulsante = document.createElement("div")
-        divPulsante.innerHTML = `<input type="button" class="bottoneRisposta" id="r${i}">${risposta}</input>`
-        return divPulsante
+        let stringaPulsante = `<button class="bottoneRisposta" id="r${i}">${risposta}</button>`
+        return stringaPulsante
     }
 
     const divBloccoRisposte = document.createElement("div")
@@ -288,11 +286,10 @@ const divDinamicoQuestion = async function (obgDomanda) {
         domande_da_proporre.splice(Math.floor(Math.random() * 3), 0, obgDomanda.correct_answer);
 
         for (let i = 0; i < 4; i++) {
-            console.log(domande_da_proporre[i])
             if (i < 2) {
-                divRigaRisposte1.appendChild(creaPulsante(domande_da_proporre[i], i))
+                divRigaRisposte1.innerHTML = divRigaRisposte1.innerHTML + creaPulsante(domande_da_proporre[i], i)
             } else {
-                divRigaRisposte2.appendChild(creaPulsante(domande_da_proporre[i], i))
+                divRigaRisposte2.innerHTML = divRigaRisposte2.innerHTML + creaPulsante(domande_da_proporre[i], i)
             }
             divBloccoRisposte.appendChild(divRigaRisposte1)
             divBloccoRisposte.appendChild(divRigaRisposte2)
@@ -303,9 +300,7 @@ const divDinamicoQuestion = async function (obgDomanda) {
         divBloccoRisposte.appendChild(divRigaRisposte1)
     }
 
-
-
-
+    //// finisco il metodo e ritorno
     const divRitorno = document.createElement("div")
     await fermaTicToc();
     divRitorno.appendChild(cerchioTimer(obgDomanda.difficulty))
