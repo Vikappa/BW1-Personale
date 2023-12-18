@@ -46,7 +46,7 @@ const start = async function () {
     console.log("Array domande selezionate")
     console.log(arrayDomande[0])
 
-    await dinamicStage.appendChild(divDinamicoQuestion(arrayDomande[0]))
+    dinamicStage.appendChild(await divDinamicoQuestion(arrayDomande[0]))
 
 }
 
@@ -74,6 +74,7 @@ const timer = function (difficoltaStringa) {
             tempo--
             console.log("Aggiorno tempo")
             if (document.getElementById("nSecondi")) {
+                document.getElementById("nSecondi").style = "font-size: 4em;text-shadow: 0 0 10px rgba(255, 255, 255, 0.8)"
                 document.getElementById("nSecondi").textContent = tempo
             }
         } else {
@@ -85,7 +86,7 @@ const timer = function (difficoltaStringa) {
     intervalloUnico = setInterval(aggiornaTimer, 1000)
 
     return tempo;
-} // setta un metodo interval di nome aggiornaTimer() che aggiorna il testo in base alla stringa easy medium hard ricevuta
+} // setta un metodo interval di nome aggiornaTimer() che aggiorna il testo in base alla stringa easy medium hard ricevuta 
 
 const diffInSecondi = function (diffString) {
     switch (diffString) {
@@ -201,22 +202,19 @@ const cerchioTimer = function (difficolta) {
         case "easy":
             divCerchio.innerHTML = `    
               <svg id="svgGenerale">
-                <circle class="svgCircle" id="circle30" r="70" cx="75" cy="75"></circle>
-                <circle class="svgCircle"  id="circleBackground" r="70" cx="75" cy="75"></circle>
+                <circle class="svgCircle" id="circle30" r="70" cx="80" cy="80"></circle>
               </svg>`
             break
         case "medium":
             divCerchio.innerHTML = `    
               <svg id="svgGenerale">
-                <circle class="svgCircle"  id="circle60" r="70" cx="75" cy="75"></circle>
-                <circle class="svgCircle"  id="circleBackground" r="70" cx="75" cy="75"></circle>
+                <circle class="svgCircle"  id="circle60" r="70" cx="80" cy="80"></circle>
               </svg>`
             break
         case "hard":
             divCerchio.innerHTML = `    
               <svg id="svgGenerale">
-                <circle class="svgCircle"  id="circle120" r="70" cx="75" cy="75"></circle>
-                <circle class="svgCircle"  id="circleBackground" r="70" cx="75" cy="75"></circle>
+                <circle class="svgCircle"  id="circle120" r="70" cx="80" cy="80"></circle>
               </svg>`
             break
     }
@@ -227,6 +225,7 @@ const cerchioTimer = function (difficolta) {
 
     pseconds.textContent = "seconds"
     nSecondi.id = "nSecondi"
+    nSecondi.style = "font-size: 4em;text-shadow: 0 0 10px rgba(255, 255, 255, 0.8)"
     nSecondi.textContent = convertiStringaInSecondiTimer(difficolta);
 
     nSecondi.textContent = timer(difficolta)
@@ -236,8 +235,8 @@ const cerchioTimer = function (difficolta) {
     divTime.appendChild(nSecondi)
     divTime.appendChild(primanenti)
 
-    cerchioTimerHtml.style.width = "150px"
-    cerchioTimerHtml.style.height = "150px"
+    cerchioTimerHtml.style.width = "160px"
+    cerchioTimerHtml.style.height = "160px"
 
     cerchioTimerHtml.appendChild(divCerchio)
     cerchioTimerHtml.appendChild(divTime)
@@ -248,16 +247,18 @@ const cerchioTimer = function (difficolta) {
 const divDinamicoQuestion = async function (obgDomanda) {
     if (!obgDomanda) {
         delay(2500)
+        console.log("Metodo fetch delay")
         return divDinamicoQuestion(obgDomanda)
     }
     console.log(obgDomanda)
     dinamicStage.innerHTML = ``
     const pDomanda = document.createElement('p')
     pDomanda.textContent = (obgDomanda.question)
+    pDomanda.style = "font-size: 2rem"
 
     const divRitorno = document.createElement("div")
-    //await fermaTicToc();
-    //divRitorno.appendChild(cerchioTimer(obgDomanda.difficulty))
+    await fermaTicToc();
+    divRitorno.appendChild(cerchioTimer(obgDomanda.difficulty))
     divRitorno.appendChild(pDomanda)
 
     return divRitorno

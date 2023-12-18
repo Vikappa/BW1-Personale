@@ -10,3 +10,103 @@ html {
     height: auto;
     text-align: center;
 }
+
+@keyframes s3 {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+#circleBackground {
+    stroke-dasharray: 437px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 10px;
+    stroke: #050505;
+    opacity: 0.2;
+    fill: none;
+    z-index: -1;
+}
+
+#circle30 {
+    stroke-dasharray: 435px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: square;
+    stroke-width: 20px;
+    stroke: #00ffff;
+    fill: none;
+    animation: countdown 30s linear infinite forwards;
+    z-index: 1;
+}
+
+#circle60 {
+    stroke-dasharray: 435px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: square;
+    stroke-width: 20px;
+    stroke: #00ffff;
+    fill: none;
+    animation: countdown 60s linear infinite forwards;
+    z-index: 1;
+}
+
+#circle120 {
+    stroke-dasharray: 435px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: square;
+    stroke-width: 20px;
+    stroke: #00ffff;
+    fill: none;
+    animation: countdown 120s linear infinite forwards;
+    z-index: 1;
+}
+
+@keyframes countdown {
+    from {
+        stroke-dashoffset: 0px;
+    }
+
+    to {
+        stroke-dashoffset: -435px;
+    }
+}
+
+#time {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#time p {
+    padding: 1px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+
+
+#time p:nth-child(2) {
+    font-size: 2em;
+}
+
+#svgGenerale {
+    transform: rotate(271deg);
+    position: absolute;
+    top: -77px;
+    right: -225px;
+    overflow: visible;
+}
+
+#countdown {
+    position: fixed;
+    right: 5%;
+    top: 10%;
+}
+
+@media (max-width: 1000px) {
+    #countdown {
+        position: static;
+        margin: 5% auto;
+    }
+}
