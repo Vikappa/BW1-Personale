@@ -1,5 +1,5 @@
 const buttonClick = function () {
-    window.location.href = "../HTMLs/questions.html";
+    window.location.host = "../HTMLs/questions.html";
 };
 
 button = document.getElementById('buttonProceed');
