@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////// Variabili comuni ai metodi della pagina //////////////////////////////////////////////
-const apiUrl = "https://opentdb.com/api.php?amount=50&category=18"
+const apiUrl = "https://opentdb.com/api.php?amount=50&category=15"
 const body = document.getElementsByName("body")[0]
 const dinamicStage = document.getElementById("dinamicStage")
 const arrayLeaderBoard = []
@@ -41,8 +41,14 @@ const start = async function () {
             }
         });
     }
+
     /////////// assegno arrayDomande alla variabile comune di tutta la pagina ///////////
     arrayDomande = [...arrayFinale]
+
+    //filtro le domande che contengono caratteri speciali 
+    const specialCharRegex = /[^\w\s]/;
+    arrayDomande.filter(obDomanda => !specialCharRegex.test(obDomanda.question));
+
     console.log("Array domande selezionate")
     console.log(arrayDomande[0])
 
@@ -252,14 +258,60 @@ const divDinamicoQuestion = async function (obgDomanda) {
     }
     console.log(obgDomanda)
     dinamicStage.innerHTML = ``
+    //question
     const pDomanda = document.createElement('p')
     pDomanda.textContent = (obgDomanda.question)
-    pDomanda.style = "font-size: 2rem"
+    pDomanda.id = "pDomanda"
+    pDomanda.style = `
+    font-size: 2rem;
+    max-width: 70%;
+    text-align: center;
+    font-size: 1.8em;`
+
+    // blocco risposte
+    const creaPulsante = function (risposta, i) {
+        const divPulsante = document.createElement("div")
+        divPulsante.innerHTML = `<input type="button" class="bottoneRisposta" id="r${i}">${risposta}</input>`
+        return divPulsante
+    }
+
+    const divBloccoRisposte = document.createElement("div")
+    divBloccoRisposte.id = "bloccoRisposte"
+
+    const divRigaRisposte1 = document.createElement("div")
+    divRigaRisposte1.id = "rigaRisposte1"
+    const divRigaRisposte2 = document.createElement("div")
+    divRigaRisposte2.id = "rigaRisposte2"
+
+    if (obgDomanda.type = "Multiple") {
+        const domande_da_proporre = [...obgDomanda.incorrect_answers]
+        domande_da_proporre.splice(Math.floor(Math.random() * 3), 0, obgDomanda.correct_answer);
+
+        for (let i = 0; i < 4; i++) {
+            console.log(domande_da_proporre[i])
+            if (i < 2) {
+                divRigaRisposte1.appendChild(creaPulsante(domande_da_proporre[i], i))
+            } else {
+                divRigaRisposte2.appendChild(creaPulsante(domande_da_proporre[i], i))
+            }
+            divBloccoRisposte.appendChild(divRigaRisposte1)
+            divBloccoRisposte.appendChild(divRigaRisposte2)
+        }
+    } else {
+        divRigaRisposte1.appendChild(creaPulsante("True", "true"))
+        divRigaRisposte1.appendChild(creaPulsante("False", "false"))
+        divBloccoRisposte.appendChild(divRigaRisposte1)
+    }
+
+
+
 
     const divRitorno = document.createElement("div")
     await fermaTicToc();
     divRitorno.appendChild(cerchioTimer(obgDomanda.difficulty))
     divRitorno.appendChild(pDomanda)
+    divRitorno.appendChild(divBloccoRisposte)
+    divRitorno.id = "questionStage"
 
     return divRitorno
 } // ritorna un div

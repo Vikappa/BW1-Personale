@@ -1,10 +1,13 @@
 body,
 html {
     height: 100%;
+
 }
 
 #dinamicStage {
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: auto;
@@ -15,17 +18,6 @@ html {
     100% {
         transform: rotate(1turn);
     }
-}
-
-#circleBackground {
-    stroke-dasharray: 437px;
-    stroke-dashoffset: 0px;
-    stroke-linecap: round;
-    stroke-width: 10px;
-    stroke: #050505;
-    opacity: 0.2;
-    fill: none;
-    z-index: -1;
 }
 
 #circle30 {
@@ -91,7 +83,7 @@ html {
 }
 
 #svgGenerale {
-    transform: rotate(271deg);
+    transform: rotate(270deg);
     position: absolute;
     top: -77px;
     right: -225px;
@@ -109,4 +101,10 @@ html {
         position: static;
         margin: 5% auto;
     }
+}
+
+#questionStage {}
+
+#pDomanda {
+    margin: 0 auto;
 }
