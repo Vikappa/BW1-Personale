@@ -10,7 +10,7 @@ let arrayDomande = []
 let nDomandeFatte = 0
 let username
 let intervalloUnico
-
+let currentQuestion = {}
 //////////////////////////////////////////////////////// Metodo FETCH /////////////////////////////////////////////////////////
 function delay(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms))
@@ -50,7 +50,7 @@ const start = async function () {
     arrayDomande.filter(obDomanda => !specialCharRegex.test(obDomanda.question));
 
     console.log("Array domande selezionate")
-    console.log(arrayDomande[0])
+    console.log(arrayDomande)
 
     dinamicStage.appendChild(await divDinamicoQuestion(arrayDomande[0]))
 
@@ -94,6 +94,20 @@ const timer = function (difficoltaStringa) {
     return tempo;
 } // setta un metodo interval di nome aggiornaTimer() che aggiorna il testo in base alla stringa easy medium hard ricevuta 
 
+const sendRisposta = function (i) {
+    console.log(currentQuestion)
+    const risposta = {
+        iRisposta: i,
+        risposte: [document.getElementById("r0").innerText, document.getElementById("r1").innerText, document.getElementById("r2").innerText, document.getElementById("r3").innerText],
+        difficolta: currentQuestion.difficulty,
+        tipo: currentQuestion.type,
+        difficoltà: currentQuestion.difficulty,
+        rispostaGiusta: currentQuestion.correct_answer
+    }
+
+    arrayRisposte.push(risposta)
+    dinamicStage.appendChild(divDinamicoQuestion(arrayDomande[nDomandeFatte]))
+}
 const diffInSecondi = function (diffString) {
     switch (diffString) {
         case `easy`:
@@ -132,16 +146,15 @@ function setTextPepato(element, newText) {
 }
 
 const rispostaVuota = async function () {
-    let risposta = {
-        type: currentQuestion.type,
-        question: currentQuestion.question,
-        answer: "Non ho risposto",
-        all_answer: currentQuestion.arrayRispostePresentate,
-        correctAnswer: currentQuestion.correct_answer,
-    };
+    const risposta = {
+        iRisposta: -1,
+        risposte_sbagliate: currentQuestion.arrayRispostePossibili,
+        tipo: currentQuestion.type,
+        difficoltà: currentQuestion.difficulty
+    }
 
     arrayRisposte.push(risposta);
-
+    console.log(arrayRisposte)
     console.log(
         "Lunghezza array risposte: " +
         arrayRisposte.length +
@@ -251,11 +264,15 @@ const cerchioTimer = function (difficolta) {
 } //ritorna un div
 
 const divDinamicoQuestion = async function (obgDomanda) {
+    //modifica le variabili per condurre avanti l'esecuzione
     nDomandeFatte++
+    currentQuestion = obgDomanda
+
     if (!obgDomanda) {
         delay(2500)
         return divDinamicoQuestion(obgDomanda)
     }
+
     dinamicStage.innerHTML = ``
     //question
     const pDomanda = document.createElement('p')
@@ -269,7 +286,7 @@ const divDinamicoQuestion = async function (obgDomanda) {
 
     // blocco risposte
     const creaPulsante = function (risposta, i) {
-        let stringaPulsante = `<button class="bottoneRisposta" id="r${i}">${risposta}</button>`
+        let stringaPulsante = `<button class="bottoneRisposta" onclick="sendRisposta(${i})" id="r${i}">${risposta}</button>`
         return stringaPulsante
     }
 
@@ -307,7 +324,6 @@ const divDinamicoQuestion = async function (obgDomanda) {
     divRitorno.appendChild(pDomanda)
     divRitorno.appendChild(divBloccoRisposte)
     divRitorno.id = "questionStage"
-
     return divRitorno
 } // ritorna un div
 
