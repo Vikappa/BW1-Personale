@@ -1,10 +1,18 @@
-const buttonClick = function () {
-    window.location.href = "./HTMLs/questions.html";
-};
+const button = document.getElementById('buttonProceed');
+const checkbox = document.getElementById('checkbox');
 
-button = document.getElementById('buttonProceed');
+
+button.addEventListener('click', buttonClick);
+
+function buttonClick() { 
+    if (checkbox.checked) {
+        window.location.href = "./HTMLs/questions.html"
+    }
+}
+
 
 checkbox.addEventListener('click', function () {
+
     if (checkbox.checked) {
         console.log('true');
         button.disabled = false;
@@ -16,5 +24,7 @@ checkbox.addEventListener('click', function () {
         button.classList.remove('enabled');
         button.classList.add('disabled');
     }
-});
+}
+)
+
 
