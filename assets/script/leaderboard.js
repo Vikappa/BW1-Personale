@@ -130,17 +130,74 @@ const divRisposta = function(obgRisposta, obgDomanda) {
 
 
 
-const divRisposte = function(){
-    const wrapper = document.createElement('div')
-    wrapper.style.display = "flex"
-    wrapper.style.flexDirection = "column"
+const divRisposte = function() {
+    const wrapper = document.createElement('div');
+    wrapper.style.display = "flex";
+    wrapper.style.flexDirection = "column";
 
+    const canvas = document.createElement('canvas')
+    canvas.classList.add("canvaGraficoCiambella")
+    wrapper.appendChild(canvas)
+
+const risposteCorrette = arrayRisposte.reduce((acc, cur, idx) => {
+    const rispostaUtente = cur.userAnswer.toLowerCase();
+    const rispostaCorretta = arrayDomande[idx].correct_answer.toLowerCase();
+    return acc + (rispostaUtente === rispostaCorretta ? 1 : 0);
+}, 0)
+const percentualeCorrette = ((risposteCorrette / arrayRisposte.length) * 100).toFixed(2)
+// Dati per il grafico
+const data = {
+    labels: ['Corrette', 'Errate'],
+    datasets: [{
+        label: 'Risposte',
+        data: [percentualeCorrette, 100 - percentualeCorrette],
+        backgroundColor: ['#63E6BE', '#FF6384'],
+        hoverOffset: 4
+    }]
+};
+
+const options = {
+    type: 'doughnut',
+    data: data,
+    options: {
+        plugins: {
+            tooltip: {
+                enabled: false, 
+            },
+            legend: {
+                display: false, 
+            }
+        }
+    },
+    plugins: [{
+        afterDraw: chart => {
+            let ctx = chart.ctx;
+            ctx.save();
+            let centerX = (chart.chartArea.left + chart.chartArea.right) / 2;
+            let centerY = (chart.chartArea.top + chart.chartArea.bottom) / 2;
+            ctx.font = '20px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#fff'; 
+            ctx.fillText(percentualeCorrette + '%', centerX, centerY);
+            ctx.restore();
+        }
+    }]
+};
+
+// Crea il grafico utilizzando il contesto del canvas direttamente
+new Chart(canvas.getContext('2d'), options);
+
+
+
+    // Aggiungi le risposte al wrapper
     for (let index = 0; index < arrayRisposte.length; index++) {
-        wrapper.appendChild(divRisposta(arrayRisposte[index], arrayDomande[index]))
+        wrapper.appendChild(divRisposta(arrayRisposte[index], arrayDomande[index]));
     }
 
-    return wrapper
-}
+    return wrapper;
+};
+
 
 const divPartecipante = function(partecipante){
     const wrapper = document.createElement('div')

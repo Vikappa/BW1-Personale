@@ -68,6 +68,14 @@ body{
     margin: 0;
 }
 
+.canvaGraficoCiambella{
+    margin: 20px auto 5px auto;
+    padding: 20px;
+    max-width: 500px;
+    max-height: 500px;
+}
+
+
 .divRisposta h5{
     margin: 40px 0 5px 0;
     font-size: 1rem;
