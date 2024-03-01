@@ -72,66 +72,63 @@ bottoniTab.forEach((bottone, index) => {
     });
 })
 
-const divRisposta = function(obgRisposta, obgDomanda){
+const divRisposta = function(obgRisposta, obgDomanda) {
     const wrapper = document.createElement('div')
     wrapper.style.display = "flex"
     wrapper.style.flexDirection = "column"
+    wrapper.style.margin = "0"
+    wrapper.style.padding = "0"
     wrapper.className = 'wrapper divRisposta'
 
     const testoDomanda = document.createElement('h5')
     testoDomanda.innerText = obgRisposta.question
     wrapper.appendChild(testoDomanda)
 
-    let risposteDate = []
-
-    for (let index = 0; index < obgDomanda.incorrect_answers.length; index++) {
-        const divRis = document.createElement('div')
-        divRis.style.display = "flex"
-        divRis.style.gap= "3px"
-        divRis.style.alignItems = "center"
-        const testoRis = document.createElement('p')
-        testoRis.style.margin = "0"
-        testoRis.innerText = obgDomanda.incorrect_answers[index]
-
-        const icona = document.createElement('i');
-        icona.classList.add('fa', 'fa-xmark');
-        icona.style.color = "#B197FC";
-        divRis.appendChild(testoRis)
-
-        if(obgDomanda.incorrect_answers[index] === obgRisposta.userAnswer){
-            divRis.appendChild(icona)
-        }
-
-        risposteDate.push(divRis)
+    let risposte = obgRisposta.incorrect_answers.slice()
+    if (!risposte.includes(obgDomanda.correct_answer)) {
+        risposte.push(obgDomanda.correct_answer);
     }
 
-    const divRis = document.createElement('div')
-    divRis.style.display = "flex"
-    divRis.style.gap= "3px"
-    divRis.style.alignItems = "center"
+    risposte.forEach(risposta => {
+        const divRis = document.createElement('div');
+        divRis.style.display = "flex";
+        divRis.style.gap = "3px";
+        divRis.style.alignItems = "center";
+        const testoRis = document.createElement('p');
+        testoRis.style.margin = "0";
+        testoRis.style.fontSize = "0.9rem";
+        testoRis.innerText = risposta;
+        divRis.style.padding = "3px"
+        divRis.style.borderRadius = "8px"
+        
 
-    const testoRis = document.createElement('p')
-    testoRis.style.margin = "0"
-    testoRis.innerText = obgDomanda.correct_answer
+        divRis.appendChild(testoRis);
 
-    const icona = document.createElement('i');
-    icona.classList.add('fa', 'fa-check');
-    icona.style.color = "#63E6BE";
-    risposteDate.push(divRis)
-    divRis.appendChild(testoRis)
-    
-        if(obgDomanda.correct_answer === obgRisposta.userAnswer){
-            divRis.appendChild(icona)
-            divRis.classList.add("correctAnswer")
-        }    
-    
+        if (risposta === obgDomanda.correct_answer) {
+            testoRis.style.color = "lightgreen";
+            divRis.style.backgroundColor = "#233a2c"
+        } 
 
-    risposteDate.forEach(element => {
-        wrapper.appendChild(element)
-    })
+        if (risposta === obgRisposta.userAnswer) {
+            const icona = document.createElement('i');
+            icona.classList.add('fa', risposta === obgDomanda.correct_answer ? 'fa-check' : 'fa-xmark');
+            icona.style.color = risposta === obgDomanda.correct_answer ? "lightgreen" : "red";
+            divRis.appendChild(icona);
 
-    return wrapper
+            if (risposta !== obgDomanda.correct_answer) {
+                testoRis.style.color = "red";
+            } else {
+                divRis.style.backgroundColor = "#233a2c"; // Assicura il colore di sfondo per risposta corretta
+            }
+        }
+
+        wrapper.appendChild(divRis);
+    });
+
+    return wrapper;
 }
+
+
 
 const divRisposte = function(){
     const wrapper = document.createElement('div')

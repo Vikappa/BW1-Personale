@@ -64,6 +64,15 @@
     margin-bottom: 5px;
 }
 
+body{
+    margin: 0;
+}
+
+.divRisposta h5{
+    margin: 40px 0 5px 0;
+    font-size: 1rem;
+}
+
 .sfondoBarra {
     background-color: #ddd;
     border-radius: 5px;
@@ -87,7 +96,7 @@
 }
 
 .fa-check {
-    color: #63E6BE;
+    color: #01af44;
 }
 
 .fa-xmark {
