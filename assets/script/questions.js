@@ -19,6 +19,8 @@ const updateDinamicStage = () => {
         dinamicStage.removeChild(dinamicStage.firstChild)
     }
     if(arrayDomande.length === arrayRisposte.length){
+        sessionStorage.setItem("arrayRisposte", JSON.stringify(arrayRisposte))
+        sessionStorage.setItem("arrayDomande", JSON.stringify(arrayDomande))
         location.href = "leaderboard.html"
     } else {
         dinamicStage.appendChild(divDomanda(arrayDomande, arrayRisposte, updateDinamicStage))
@@ -33,7 +35,7 @@ const decodificaCaratteriHTML = (arrayQuestions) => {
         '&lt;': '<',
         '&gt;': '>',
         '&#039;': "'",
-        '&Acute;': '´', // Aggiunta dell'entità per l'accento acuto
+        '&Acute;': '´', 
         // Aggiungi altre entità qui se necessario
     };
     
