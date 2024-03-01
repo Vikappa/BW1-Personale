@@ -4,6 +4,45 @@ const listaPartecipante = document.getElementById('resultList')
 const risultatiRisposta = document.getElementById('yourResult')
  const arrayDomande = sessionStorage.getItem("arrayDomande")? JSON.parse(sessionStorage.getItem("arrayDomande")) : initialLeaderboard
  const arrayRisposte = sessionStorage.getItem("arrayRisposte")? JSON.parse(sessionStorage.getItem("arrayRisposte")) : []
+ 
+ const calcolaPercentualeRisposteCorrette = function(arrayDomande, arrayRisposte) {
+    let risposteCorrette = 0;
+    
+    if (arrayDomande.length !== arrayRisposte.length) {
+        console.error("Gli array delle domande e delle risposte non corrispondono!")
+        return 0
+    }
+
+    for (let i = 0; i < arrayRisposte.length; i++) {
+        let rispostaUtente = arrayRisposte[i].userAnswer.toLowerCase()
+        let rispostaCorretta = arrayDomande[i].correct_answer.toLowerCase()
+
+        if (arrayRisposte[i].type === "boolean") {
+            if (rispostaUtente === "vero") rispostaUtente = "true"
+            if (rispostaUtente === "falso") rispostaUtente = "false"
+        }
+
+        if (rispostaUtente === rispostaCorretta) {
+            risposteCorrette++
+        }
+    }
+
+    const percentualeCorrettezza = (risposteCorrette / arrayRisposte.length) * 100
+
+    const leaderboard = initialLeaderBoard
+
+    const nuovoPartecipante = {
+        nomePartecipante: sessionStorage.getItem("nomePartecipante"),
+        scorePartecipante: percentualeCorrettezza.toFixed(2),
+        profilepic: sessionStorage.getItem("profilePic") 
+    }
+    leaderboard.push(nuovoPartecipante);
+
+}
+
+calcolaPercentualeRisposteCorrette(arrayDomande, arrayRisposte)
+
+ 
  arrayRisposte.forEach(element => {
         if(element.userAnswer === "Falso"){
             element.userAnswer = "False"
@@ -40,7 +79,8 @@ const divRisposta = function(obgRisposta, obgDomanda){
     for (let index = 0; index < obgDomanda.incorrect_answers.length; index++) {
         const divRis = document.createElement('div')
         divRis.style.display = "flex"
-
+        divRis.style.gap= "3px"
+        divRis.style.alignItems = "center"
         const testoRis = document.createElement('p')
         testoRis.style.margin = "0"
         testoRis.innerText = obgDomanda.incorrect_answers[index]
@@ -59,6 +99,8 @@ const divRisposta = function(obgRisposta, obgDomanda){
 
     const divRis = document.createElement('div')
     divRis.style.display = "flex"
+    divRis.style.gap= "3px"
+    divRis.style.alignItems = "center"
 
     const testoRis = document.createElement('p')
     testoRis.style.margin = "0"
@@ -72,6 +114,7 @@ const divRisposta = function(obgRisposta, obgDomanda){
     
         if(obgDomanda.correct_answer === obgRisposta.userAnswer){
             divRis.appendChild(icona)
+            divRis.classList.add("correctAnswer")
         }    
     
 

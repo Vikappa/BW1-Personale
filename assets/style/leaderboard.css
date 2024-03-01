@@ -93,3 +93,10 @@
 .fa-xmark {
     color: #B197FC;
 }
+
+.correctAnswer{
+    background-color: rgb(49, 49, 49);
+    width: fit-content;
+    padding: "10px" !important;
+    border-radius: "5px" !important;
+}
