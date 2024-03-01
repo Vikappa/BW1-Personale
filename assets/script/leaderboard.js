@@ -136,7 +136,7 @@ const divRisposte = function() {
     wrapper.style.flexDirection = "column";
 
     const canvas = document.createElement('canvas')
-    canvas.classList.add("canvaGraficoCiambella")
+
     wrapper.appendChild(canvas)
 
 const risposteCorrette = arrayRisposte.reduce((acc, cur, idx) => {
@@ -151,7 +151,7 @@ const data = {
     datasets: [{
         label: 'Risposte',
         data: [percentualeCorrette, 100 - percentualeCorrette],
-        backgroundColor: ['#63E6BE', '#FF6384'],
+        backgroundColor: ['#4D21E6', '#FF234B'],
         hoverOffset: 4
     }]
 };
