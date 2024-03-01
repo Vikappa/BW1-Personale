@@ -39,9 +39,11 @@ const risultatiRisposta = document.getElementById('yourResult')
     const caricati = localStorage.getItem("leaderboard")
     const strinCaricati = JSON.parse(caricati)
 
+if(strinCaricati){
     for (let index = 0; index < strinCaricati.length; index++) {
         leaderboard.push(strinCaricati[index])
     }
+}
 
     leaderboard.push(nuovoPartecipante)
 }
