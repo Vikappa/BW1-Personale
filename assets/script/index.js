@@ -55,7 +55,7 @@ function saveImageToSessionStorage() {
                 
                 var resizedImage = canvas.toDataURL('image/png')
                 sessionStorage.setItem('profilePic', resizedImage)
-                alert('Immagine ridimensionata e salvata in sessionStorage!')
+                alert('Immagine salvata!')
             }
             
             img.src = e.target.result

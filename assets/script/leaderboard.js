@@ -1,5 +1,4 @@
 import initialLeaderBoard from './mockupLeaderboard.js'
-const tabellaLeaderBoard = document.getElementById("leaderboard")
 const listaPartecipante = document.getElementById('resultList')
 const risultatiRisposta = document.getElementById('yourResult')
  const arrayDomande = sessionStorage.getItem("arrayDomande")? JSON.parse(sessionStorage.getItem("arrayDomande")) : initialLeaderboard
@@ -36,8 +35,15 @@ const risultatiRisposta = document.getElementById('yourResult')
         scorePartecipante: percentualeCorrettezza.toFixed(2),
         profilepic: sessionStorage.getItem("profilePic") 
     }
-    leaderboard.push(nuovoPartecipante);
 
+    const caricati = localStorage.getItem("leaderboard")
+    const strinCaricati = JSON.parse(caricati)
+
+    for (let index = 0; index < strinCaricati.length; index++) {
+        leaderboard.push(strinCaricati[index])
+    }
+
+    leaderboard.push(nuovoPartecipante)
 }
 
 calcolaPercentualeRisposteCorrette(arrayDomande, arrayRisposte)
@@ -141,7 +147,7 @@ const divPartecipante = function(partecipante){
     const wrapper = document.createElement('div')
     wrapper.style.display = "flex"
     wrapper.style.height = "100px"
-
+    wrapper.style.margin = "10px"
 
     const wrapperImg = document.createElement('div')
     const partecipanteImg = document.createElement('img')
@@ -149,6 +155,7 @@ const divPartecipante = function(partecipante){
     partecipanteImg.style.borderRadius = "100%"
     partecipanteImg.style.height = "auto"
     partecipanteImg.style.width = "100%"
+    partecipanteImg.classList.add("profileImageLeaderboard")
     wrapperImg.style.width = "20%"
     wrapperImg.style.height = "100%"
     wrapperImg.style.display = "flex"

@@ -100,3 +100,11 @@
     padding: "10px" !important;
     border-radius: "5px" !important;
 }
+
+@media screen and (min-width: 576px) {
+    .profileImageLeaderboard{
+        height: 100px !important;
+        width: 100px !important;
+        margin: auto;
+    }
+}
