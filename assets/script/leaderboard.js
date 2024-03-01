@@ -4,6 +4,14 @@ const listaPartecipante = document.getElementById('resultList')
 const risultatiRisposta = document.getElementById('yourResult')
  const arrayDomande = sessionStorage.getItem("arrayDomande")? JSON.parse(sessionStorage.getItem("arrayDomande")) : initialLeaderboard
  const arrayRisposte = sessionStorage.getItem("arrayRisposte")? JSON.parse(sessionStorage.getItem("arrayRisposte")) : []
+ arrayRisposte.forEach(element => {
+        if(element.userAnswer === "Falso"){
+            element.userAnswer = "False"
+        }
+        if(element.userAnswer === "Falso"){
+            element.userAnswer = "False"
+        }
+});
 const bottoniTab = document.querySelectorAll(".switchButton");
 bottoniTab.forEach((bottone, index) => {
     bottone.addEventListener("click", () => {
@@ -40,11 +48,11 @@ const divRisposta = function(obgRisposta, obgDomanda){
         const icona = document.createElement('i');
         icona.classList.add('fa', 'fa-xmark');
         icona.style.color = "#B197FC";
-console.log(obgRisposta)
-        if(obgDomanda.incorrect_answers[index] === obgRisposta.answer)
-        divRis.appendChild(icona)
-
         divRis.appendChild(testoRis)
+
+        if(obgDomanda.incorrect_answers[index] === obgRisposta.userAnswer){
+            divRis.appendChild(icona)
+        }
 
         risposteDate.push(divRis)
     }
@@ -54,18 +62,18 @@ console.log(obgRisposta)
 
     const testoRis = document.createElement('p')
     testoRis.style.margin = "0"
-    testoRis.innerText = obgRisposta.correct_answer
+    testoRis.innerText = obgDomanda.correct_answer
 
     const icona = document.createElement('i');
     icona.classList.add('fa', 'fa-check');
     icona.style.color = "#63E6BE";
-    divRis.appendChild(icona);
-
-    divRis.appendChild(icona)
-    divRis.appendChild(testoRis)
-
     risposteDate.push(divRis)
-
+    divRis.appendChild(testoRis)
+    
+        if(obgDomanda.correct_answer === obgRisposta.userAnswer){
+            divRis.appendChild(icona)
+        }    
+    
 
     risposteDate.forEach(element => {
         wrapper.appendChild(element)
