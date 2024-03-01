@@ -28,8 +28,8 @@
 }
 
 
-#title-instructions #buttonProceed {
-    position: absolute;
+#title-instructions  {
+    position: sticky;
     right: 8vw;
     bottom: 7vh;
     width: 16vw;
@@ -37,10 +37,7 @@
 }
 
 #buttonProceed {
-    position: absolute;
-    right: 10vw;
-    bottom: 5vh;
-    height: 70px;
+margin: 0 20px 0 auto;
     width: 300px;
     font-family: 'Outfit', sans-serif;
     font-size: 1.5rem;
@@ -52,7 +49,6 @@
 
 @media (max-width: 650px) {
     #buttonProceed {
-        position: absolute;
         right: 10%;
         bottom: 8vh;
         height: 50px;
@@ -62,7 +58,6 @@
 
 @media (max-width: 420px) {
     #buttonProceed {
-        position: static;
         bottom: 0;
         right: auto;
         margin: 1vh;
