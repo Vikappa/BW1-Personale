@@ -21,7 +21,7 @@ const updateDinamicStage = () => {
     if(arrayDomande.length === arrayRisposte.length){
         sessionStorage.setItem("arrayRisposte", JSON.stringify(arrayRisposte))
         sessionStorage.setItem("arrayDomande", JSON.stringify(arrayDomande))
-        window.location.href = "./HTMLs/leaderboard.html"
+        window.location.href = "./leaderboard.html"
     } else {
         dinamicStage.appendChild(divDomanda(arrayDomande, arrayRisposte, updateDinamicStage))
     }
