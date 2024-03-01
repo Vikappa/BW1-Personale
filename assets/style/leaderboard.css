@@ -29,3 +29,67 @@
 .invisibile{
     display: none !important;
 }
+
+/* Stili generali per migliorare il layout */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.wrapperImg {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.partecipanteImg {
+    border-radius: 50%;
+    width: 80px; /* Imposta una larghezza fissa per mantenere l'aspetto */
+    height: auto;
+}
+
+.divPartecipanteRitorno, .divRisposta {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 10px;
+    padding: 10px;
+}
+
+.rigaPartecipante, .rigaPercentuale, .divRis {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.sfondoBarra {
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.barraPercentuale {
+    background-color: #9E3BA8;
+    height: 8px;
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+.nomePartecipante, .scorePartecipante, .testoRis {
+    margin: 0;
+}
+
+.nomePartecipante {
+    font-weight: bold;
+}
+
+.fa-check {
+    color: #63E6BE;
+}
+
+.fa-xmark {
+    color: #B197FC;
+}

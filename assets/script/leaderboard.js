@@ -2,9 +2,8 @@ import initialLeaderBoard from './mockupLeaderboard.js'
 const tabellaLeaderBoard = document.getElementById("leaderboard")
 const listaPartecipante = document.getElementById('resultList')
 const risultatiRisposta = document.getElementById('yourResult')
-// const arrayDomande = sessionStorage.getItem("arrayDomande")? JSON.parse(sessionStorage.getItem("arrayDomande")) : initialLeaderboard
-// const arrayRisposte = sessionStorage.getItem("arrayRisposte")? JSON.parse(sessionStorage.getItem("arrayRisposte")) : []
-
+ const arrayDomande = sessionStorage.getItem("arrayDomande")? JSON.parse(sessionStorage.getItem("arrayDomande")) : initialLeaderboard
+ const arrayRisposte = sessionStorage.getItem("arrayRisposte")? JSON.parse(sessionStorage.getItem("arrayRisposte")) : []
 const bottoniTab = document.querySelectorAll(".switchButton");
 bottoniTab.forEach((bottone, index) => {
     bottone.addEventListener("click", () => {
@@ -18,20 +17,71 @@ bottoniTab.forEach((bottone, index) => {
     });
 })
 
-const divRisposta = function(){
+const divRisposta = function(obgRisposta, obgDomanda){
     const wrapper = document.createElement('div')
+    wrapper.style.display = "flex"
+    wrapper.style.flexDirection = "column"
+    wrapper.className = 'wrapper divRisposta'
+
+    const testoDomanda = document.createElement('h5')
+    testoDomanda.innerText = obgRisposta.question
+    wrapper.appendChild(testoDomanda)
+
+    let risposteDate = []
+
+    for (let index = 0; index < obgDomanda.incorrect_answers.length; index++) {
+        const divRis = document.createElement('div')
+        divRis.style.display = "flex"
+
+        const testoRis = document.createElement('p')
+        testoRis.style.margin = "0"
+        testoRis.innerText = obgDomanda.incorrect_answers[index]
+
+        const icona = document.createElement('i');
+        icona.classList.add('fa', 'fa-xmark');
+        icona.style.color = "#B197FC";
+console.log(obgRisposta)
+        if(obgDomanda.incorrect_answers[index] === obgRisposta.answer)
+        divRis.appendChild(icona)
+
+        divRis.appendChild(testoRis)
+
+        risposteDate.push(divRis)
+    }
+
+    const divRis = document.createElement('div')
+    divRis.style.display = "flex"
+
+    const testoRis = document.createElement('p')
+    testoRis.style.margin = "0"
+    testoRis.innerText = obgRisposta.correct_answer
+
+    const icona = document.createElement('i');
+    icona.classList.add('fa', 'fa-check');
+    icona.style.color = "#63E6BE";
+    divRis.appendChild(icona);
+
+    divRis.appendChild(icona)
+    divRis.appendChild(testoRis)
+
+    risposteDate.push(divRis)
 
 
-
+    risposteDate.forEach(element => {
+        wrapper.appendChild(element)
+    })
 
     return wrapper
 }
 
 const divRisposte = function(){
     const wrapper = document.createElement('div')
+    wrapper.style.display = "flex"
+    wrapper.style.flexDirection = "column"
 
-
-
+    for (let index = 0; index < arrayRisposte.length; index++) {
+        wrapper.appendChild(divRisposta(arrayRisposte[index], arrayDomande[index]))
+    }
 
     return wrapper
 }
@@ -123,3 +173,5 @@ for (let index = 0; index < initialLeaderBoard.length; index++) {
     listaPartecipante.appendChild(divPartecipante(initialLeaderBoard[index]))
     
 }
+
+risultatiRisposta.appendChild(divRisposte())
