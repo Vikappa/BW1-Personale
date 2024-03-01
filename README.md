@@ -36,4 +36,7 @@ Trivia Challenge è un'applicazione web dinamica che mette alla prova le tue con
 - **CSS3**: Limato a mano in ogni mediaquery senza usare nessun framework per la responsiveness.
 - **JavaScript Vanilla**: Per la logica dell'applicazione, gestione degli eventi, interazione con l'API di OpenTriviaDB, e manipolazione del DOM.
 
-
+### Crediti aggiuntivi:
+- Timer domande: Francesco Andrisani
+- Animazione caricamento domande: https://loading.io/css/
+- Logo Vincenzoft: DALL-E
