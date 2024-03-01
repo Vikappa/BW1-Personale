@@ -50,11 +50,24 @@
           <span> Pigiando questo tasto generalmente accetti condizioni di qualcosa. Adesso c'è perchè volevo farti fare
             un clic in più</span>
         </div>
+        <br>
+      <div id="lineaNome">
+        <p id="pInserisciNome" >Inserisci il tuo nome</p>
+        <input type="text" placeholder="Nome.." id="inputNome">
+      </div>
+      <br>
       </form>
+      <p>Carica una foto (facoltativo)</p>
+      <input class="indexSaveButton" type="file" id="imageInput" accept="image/*" />
+      <button class="indexSaveButton" id="saveButton" style="display: none;" >Carica e Salva</button>
+      
+
     </footer>
     <button id="buttonProceed" disabled>PROCEED</button>
 
   </main>
+
+  
   <script type="module" src="./assets/script/index.js"></script>
   <script type="module" src="./assets/script/divDomanda.js"></script>
 </body>

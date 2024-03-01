@@ -152,3 +152,46 @@
     bottom: 200%;
     left: -50%;
 }
+
+#lineaNome{
+    display: flex;
+    align-items: center;
+  }
+
+  #lineaNome{
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+  }
+
+  #inputNome{
+    background: transparent;
+    border: 0; 
+    color: white;
+    outline: none; 
+    padding: 10px 0 3px 0;
+    border-bottom: 2px solid white; 
+
+    transition: transform 0.3s ease; 
+  }
+
+  .indexSaveButton {
+    margin: 10px 0; /* Centra gli elementi orizzontalmente e aggiunge spazio sopra e sotto */
+    padding: 10px 20px; /* Aggiunge spazio all'interno dei bottoni per renderli più grandi */
+    border: 1px solid #ccc; /* Bordi sottili e leggeri */
+    border-radius: 5px; /* Angoli arrotondati */
+    background-color: transparent; /* Colore di sfondo leggero */
+    cursor: pointer; /* Cambia il cursore in una mano per indicare che è cliccabile */
+    font-size: 16px; /* Aumenta la dimensione del testo per una migliore leggibilità */
+    transition: all 0.3s ease; /* Aggiunge una transizione per gli stati hover e focus */
+    color: white;
+}
+
+.indexSaveButton:hover, .indexSaveButton:focus {
+    background-color: #6000df; /* Cambia colore di sfondo all'hover o al focus per feedback visivo */
+    border-color: #6000df; /* Scure il bordo all'hover o al focus */
+}
+
+.indexSaveButton:active {
+    transform: translateY(2px); /* Effetto di pressione quando il bottone è cliccato */
+}
